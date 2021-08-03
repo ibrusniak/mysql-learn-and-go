@@ -36,6 +36,22 @@ CREATE TABLE `customers` (
     CONSTRAINT `customer_ibfk_1` FOREIGN KEY (`salesRepEmployeeNumber`) REFERENCES `employees` (`employeeNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `employees` (
+	`employeeNumber` int NOT NULL,
+    `lastName` varchar(50) NOT NULL,
+    `firstName` varchar(50) NOT NULL,
+    `extension` varchar(10) NOT NULL,
+    `email` varchar(100) NOT NULL,
+    `officeCode` varchar(10) NOT NULL,
+    `reportsTo` int NOT NULL,
+    `jobTitle` varchar(50) NOT NULL,
+    PRIMARY KEY (`employeeNumber`),
+    KEY `reprostTo` (`reportsTo`),
+    KEY `officeCode` (`officeCode`),
+    CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`reportsTo`) REFERENCES `employees` (`employeeNumber`),
+    CONSTRAINT `employee_ibfk_1` FOREIGN KEY (`officeCode`) REFERENCES `offices` (`officeCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
