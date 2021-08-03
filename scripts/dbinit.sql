@@ -107,6 +107,21 @@ CREATE TABLE `productlines` (
     PRIMARY KEY (`productLine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `products` (
+	`productCode` varchar(15) NOT NULL,
+    `productName` varchar(70) NOT NULL,
+    `productLine` varchar(50) NOT NULL,
+    `productScale` varchar(10) NOT NULL,
+    `productVendor` varchar(50) NOT NULL,
+    `productDescription` text NOT NULL,
+    `quantityInStock` smallint NOT NULL,
+    `buyPrice` decimal(10,2) NOT NULL,
+    `MSRP` decimal(10,2) NOT NULL,
+    PRIMARY KEY (`productLine`),
+    KEY `productLine` (`productLine`),
+    CONSTRAINT `products_ibfk_1` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
 
