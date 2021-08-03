@@ -99,6 +99,14 @@ CREATE TABLE `payments` (
     CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`customerNumber`) REFERENCES `customers` (`customerNumber`)
 ) ENGINE InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `productlines` (
+	`productLine` varchar(50) NOT NULL,
+    `textDescription` varchar(4000) DEFAULT NULL,
+    `htmlDescription` mediumtext,
+    `image` mediumblob,
+    PRIMARY KEY (`productLine`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
 
