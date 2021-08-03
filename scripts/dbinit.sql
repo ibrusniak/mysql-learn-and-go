@@ -77,6 +77,21 @@ CREATE TABLE `orderdetails` (
     CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`productCode`) REFERENCES `product` (`productCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `orders` (
+	`orderNumber` int NOT NULL,
+    `orderDate` date NOT NULL,
+    `requireDate` date NOT NULL,
+    `shippedDate` date DEFAULT NULL,
+    `status` varchar(15) NOT NULL,
+    `comments` text,
+    `customerNumber` int NOT NULL,
+    PRIMARY KEY (`orderNumber`),
+    KEY `customerNumber` (`customerNumber`),
+    CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerNumber`) REFERENCES `customers` (`customerNumber`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
 
