@@ -90,7 +90,14 @@ CREATE TABLE `orders` (
     CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerNumber`) REFERENCES `customers` (`customerNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
+CREATE TABLE `payments` (
+	`customerNumber` int NOT NULL,
+    `checkNumber` varchar(50) NOT NULL,
+    `paymentDate` date NOT NULL,
+    `amount` decimal(10,2) NOT NULL,
+    PRIMARY KEY (`customerNumber`, `checkNumber`),
+    CONSTRAINT `payments_ibfk_1` FOREIGN KEY (`customerNumber`) REFERENCES `customers` (`customerNumber`)
+) ENGINE InnoDB DEFAULT CHARSET=utf8mb4;
 
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
