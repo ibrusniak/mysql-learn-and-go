@@ -65,6 +65,18 @@ CREATE TABLE `offices` (
     PRIMARY KEY (`officeCode`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `orderdetails` (
+	`orderNumber` int NOT NULL,
+    `productCode` varchar(15) NOT NULL,
+    `quantityOrdered` int NOT NULL,
+    `priceEach` decimal(10,2) NOT NULL,
+    `orderLineNumber` smallint NOT NULL,
+    PRIMARY KEY (`orderNumber`, `productCode`),
+    KEY `productCode` (`productCode`),
+    CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`orderNumber`) REFERENCES `orders` (`orderNumber`),
+    CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`productCode`) REFERENCES `product` (`productCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
 
