@@ -74,7 +74,7 @@ CREATE TABLE `orderdetails` (
     PRIMARY KEY (`orderNumber`, `productCode`),
     KEY `productCode` (`productCode`),
     CONSTRAINT `orderdetails_ibfk_1` FOREIGN KEY (`orderNumber`) REFERENCES `orders` (`orderNumber`),
-    CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`productCode`) REFERENCES `product` (`productCode`)
+    CONSTRAINT `orderdetails_ibfk_2` FOREIGN KEY (`productCode`) REFERENCES `products` (`productCode`)
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `orders` (
@@ -117,7 +117,7 @@ CREATE TABLE `products` (
     `quantityInStock` SMALLINT NOT NULL,
     `buyPrice` DECIMAL(10,2) NOT NULL,
     `MSRP` DECIMAL(10,2) NOT NULL,
-    PRIMARY KEY (`productLine`),
+    PRIMARY KEY (`productCode`),
     KEY `productLine` (`productLine`),
     CONSTRAINT `products_ibfk_1` FOREIGN KEY (`productLine`) REFERENCES `productlines` (`productLine`)
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
