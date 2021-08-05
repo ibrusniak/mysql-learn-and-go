@@ -80,7 +80,7 @@ CREATE TABLE `orderdetails` (
 CREATE TABLE `orders` (
 	`orderNumber` INT NOT NULL,
     `orderDate` DATE NOT NULL,
-    `requireDate` DATE NOT NULL,
+    `requiredDate` DATE NOT NULL,
     `shippedDate` DATE DEFAULT NULL,
     `status` VARCHAR(15) NOT NULL,
     `comments` TEXT,
