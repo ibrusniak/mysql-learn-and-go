@@ -48,3 +48,17 @@ ORDER BY FIELD(jobTitle,
     'Sale Manager (EMEA)',
     'Sales Manager (APAC)',
     'VP Sales', 'VP Marketing');
+
+SELECT
+	officeCode,
+    city
+FROM
+	`classicmodels`.`offices`
+WHERE
+	TRUE OR NULL;
+    
+SELECT 1 AS `number` WHERE TRUE;
+SELECT 1 AS `number` WHERE NULL;
+SELECT 1 AS `number` WHERE TRUE OR NULL;
+SELECT 1 AS `number` WHERE TRUE AND NULL;
+
