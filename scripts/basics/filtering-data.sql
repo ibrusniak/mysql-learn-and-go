@@ -62,3 +62,19 @@ SELECT 1 AS `number` WHERE NULL;
 SELECT 1 AS `number` WHERE TRUE OR NULL;
 SELECT 1 AS `number` WHERE TRUE AND NULL;
 
+SELECT word
+FROM
+	(SELECT "case" AS `word` UNION
+	SELECT "exemplar" UNION
+	SELECT "exemplification" UNION
+	SELECT "illustration" UNION
+	SELECT "instance" UNION
+	SELECT "prototype" UNION
+	SELECT "representative" UNION
+	SELECT "sample") AS `words`
+
+WHERE
+	word LIKE '%ion' OR word LIKE '_a%';
+    
+
+
