@@ -76,5 +76,31 @@ FROM
 WHERE
 	word LIKE '%ion' OR word LIKE '_a%';
     
-
+SELECT word
+FROM
+	(SELECT 'Why' AS `word` UNION
+	SELECT 'do' UNION
+	SELECT 'we' UNION
+	SELECT 'use' UNION
+	SELECT 'it?' UNION
+	SELECT 'It' UNION
+	SELECT 'is' UNION
+	SELECT 'long' UNION
+	SELECT 'established' UNION
+	SELECT 'fact' UNION
+	SELECT 'that' UNION
+	SELECT 'reader' UNION
+	SELECT 'will' UNION
+	SELECT 'be' UNION
+	SELECT 'distracted' UNION
+	SELECT 'by' UNION
+	SELECT 'the' UNION
+	SELECT 'readable' UNION
+	SELECT 'content' UNION
+	SELECT 'of' UNION
+	SELECT 'page' UNION
+	SELECT 'when') AS `words`
+WHERE
+	word REGEXP 'b(e|y)' or
+	word REGEXP '^.{3}t$';
 
