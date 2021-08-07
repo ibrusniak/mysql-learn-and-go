@@ -35,4 +35,3 @@ SELECT 'STRING2'
 ORDER BY someValue;
 
 
-	
