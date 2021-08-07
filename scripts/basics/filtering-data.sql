@@ -31,3 +31,20 @@ FROM
 ORDER BY
 	orderDate DESC
 LIMIT 5;
+
+SELECT
+	lastName,
+    firstName,
+    jobTitle,
+    officeCode
+FROM
+	`classicmodels`.`employees`
+WHERE
+	jobTitle = 'Sales Rep'
+ORDER BY FIELD(jobTitle,
+	'President',
+    'Sales Rep',
+    'Sales Manager (NA)',
+    'Sale Manager (EMEA)',
+    'Sales Manager (APAC)',
+    'VP Sales', 'VP Marketing');
