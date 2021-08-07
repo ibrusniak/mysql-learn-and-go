@@ -104,3 +104,21 @@ WHERE
 	word REGEXP 'b(e|y)' or
 	word REGEXP '^.{3}t$';
 
+SELECT
+    f_char,
+    s_char,
+    t_char
+FROM
+    (SELECT 'A' AS `f_char`, 'B' AS `s_char`, 'Z' AS `t_char` UNION
+    SELECT 'A', 'C', 'Q' UNION
+    SELECT 'B', 'A', 'X' UNION
+    SELECT 'D', 'Z', 'F' UNION
+    SELECT 'A', 'C', 'H' UNION
+    SELECT 'B', 'Z', 'P' UNION
+    SELECT 'B', 'A', 'V' UNION
+    SELECT 'W', 'H', 'M'
+    ) AS `combination`
+WHERE
+    (f_char, s_char) IN (('B', 'A'), ('B', 'Z'));
+
+
