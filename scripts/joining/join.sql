@@ -51,11 +51,12 @@ CREATE TABLE IF NOT EXISTS `country` (
 	PRIMARY KEY (`id`)
 );
 
-/*
-CREATE TABLE IF NOT EXISTS `floor`;
-CREATE TABLE IF NOT EXISTS `room`;
-CREATE TABLE IF NOT EXISTS `rack`;
-CREATE TABLE IF NOT EXISTS `shelf`;
-*/
+CREATE TABLE IF NOT EXISTS `booklocation` (
+	`book_id` INT NOT NULL,
+    `floor_number` INT NOT NULL,
+    `rack_number` INT NOT NULL,
+    `shelf_number` INT NOT NULL,
+    FOREIGN KEY (`book_id`) REFERENCES `book` (`id`)
+);
 
 SET @@foreign_key_checks = 1;
