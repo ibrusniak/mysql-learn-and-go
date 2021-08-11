@@ -51,6 +51,24 @@ UPDATE `employees` SET `reportsTo` = 2 WHERE `id` IN (3, 4, 5);
 
 UPDATE `employees` SET `reportsTo` = 6 WHERE `id` IN (7, 8, 9);
 
+# self join
+
+SELECT
+    `emp1`.`id` AS `Employee Id`,
+    `emp1`.`first_name` AS `Employee first name`,
+    `emp1`.`last_name` AS `Employee last name`,
+    `emp1`.`reportsTo` AS `Employee reports to`,
+    `emp2`.`id` AS `Manager Id`,
+    `emp2`.`first_name` AS `Manager first name`,
+    `emp2`.`last_name` AS `Manager last name`
+FROM
+    `employees` AS `emp1`,
+    `employees` AS `emp2`
+WHERE
+    `emp1`.`reportsTo` = `emp2`.`id`
+ORDER BY
+    `emp1`.`id`
+;
 
 
 
