@@ -17,10 +17,7 @@ SET @@foreign_key_checks = 0;
 DROP TABLE IF EXISTS `book`;
 DROP TABLE IF EXISTS `author`;
 DROP TABLE IF EXISTS `country`;
-DROP TABLE IF EXISTS `state`;
-DROP TABLE IF EXISTS `city`;
-DROP TABLE IF EXISTS `floor`;
-DROP TABLE IF EXISTS `shelf`;
+DROP TABLE IF EXISTS `booklocation`;
 
 CREATE TABLE `book` (
 	`id` INT NOT NULL AUTO_INCREMENT,
