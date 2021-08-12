@@ -61,3 +61,9 @@ WHERE
     l.product IS NULL
 ORDER BY
     p.id;
+
+SELECT
+    *
+FROM
+    products p CROSS JOIN leftoversofgoods l ON TRUE;
+;
