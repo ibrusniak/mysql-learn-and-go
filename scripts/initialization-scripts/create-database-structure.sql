@@ -1,6 +1,6 @@
 
 /*
-	http://www.mysqltutorial.org
+    http://www.mysqltutorial.org
     MySQL Sample Database classicmodels
     Initialization script
 */
@@ -18,7 +18,7 @@ SET @original_foreign_key_checks=@@foreign_key_checks;
 SET @@foreign_key_checks=0;
 
 CREATE TABLE `customers` (
-	`customerNumber` INT NOT NULL,
+    `customerNumber` INT NOT NULL,
     `customerName` VARCHAR(50) NOT NULL,
     `contactFirstName` VARCHAR(50) NOT NULL,
     `contactLastName` VARCHAR(50) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `customers` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `employees` (
-	`employeeNumber` INT NOT NULL,
+    `employeeNumber` INT NOT NULL,
     `lastName` VARCHAR(50) NOT NULL,
     `firstName` VARCHAR(50) NOT NULL,
     `extension` VARCHAR(10) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE `employees` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `offices` (
-	`officeCode` VARCHAR(10) NOT NULL,
+    `officeCode` VARCHAR(10) NOT NULL,
     `city` VARCHAR(50) NOT NULL,
     `phone` VARCHAR(50) NOT NULL,
     `addressLine1` VARCHAR(50) NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `offices` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `orderdetails` (
-	`orderNumber` INT NOT NULL,
+    `orderNumber` INT NOT NULL,
     `productCode` VARCHAR(15) NOT NULL,
     `quantityOrdered` INT NOT NULL,
     `priceEach` DECIMAL(10,2) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `orderdetails` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `orders` (
-	`orderNumber` INT NOT NULL,
+    `orderNumber` INT NOT NULL,
     `orderDate` DATE NOT NULL,
     `requiredDate` DATE NOT NULL,
     `shippedDate` DATE DEFAULT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE `orders` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `payments` (
-	`customerNumber` INT NOT NULL,
+    `customerNumber` INT NOT NULL,
     `checkNumber` VARCHAR(50) NOT NULL,
     `paymentDate` DATE NOT NULL,
     `amount` DECIMAL(10,2) NOT NULL,
@@ -100,7 +100,7 @@ CREATE TABLE `payments` (
 ) ENGINE INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `productlines` (
-	`productLine` VARCHAR(50) NOT NULL,
+    `productLine` VARCHAR(50) NOT NULL,
     `textDescription` VARCHAR(4000) DEFAULT NULL,
     `htmlDescription` MEDIUMTEXT,
     `image` MEDIUMBLOB,
@@ -108,7 +108,7 @@ CREATE TABLE `productlines` (
 ) ENGINE=INNODB DEFAULT CHARSET=UTF8MB4;
 
 CREATE TABLE `products` (
-	`productCode` VARCHAR(15) NOT NULL,
+    `productCode` VARCHAR(15) NOT NULL,
     `productName` VARCHAR(70) NOT NULL,
     `productLine` VARCHAR(50) NOT NULL,
     `productScale` VARCHAR(10) NOT NULL,

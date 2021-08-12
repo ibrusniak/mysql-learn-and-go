@@ -1,13 +1,13 @@
 
 SELECT
-	4 IS NULL,
-	4 IS NOT NULL,
+    4 IS NULL,
+    4 IS NOT NULL,
     1/0 IS NULL,
     FIELD(2, 3, 4),
     FIELD(2, 3, 4) IS NULL;
     
 SELECT
-	CAST('0000-00-00' AS DATE);
+    CAST('0000-00-00' AS DATE);
 
 
 #### test ####
@@ -17,8 +17,8 @@ DROP DATABASE IF EXISTS `test-empty-date-is-null`;
 CREATE DATABASE `test-empty-date-is-null`;
 
 CREATE TABLE `test-empty-date-is-null`.`test-table` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`date` DATE NOT NULL,
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `date` DATE NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -28,18 +28,18 @@ INSERT INTO `test-empty-date-is-null`.`test-table` (`date`) VALUES
  ('1960-10-10');
  
 SELECT 
-	`id`,
+    `id`,
     `date`,
     `date` IS NULL
 FROM
-	`test-empty-date-is-null`.`test-table`;
+    `test-empty-date-is-null`.`test-table`;
 
 SELECT
-	*
+    *
 FROM
-	`test-empty-date-is-null`.`test-table` AS tab
+    `test-empty-date-is-null`.`test-table` AS tab
 WHERE
-	tab.`date` IS NULL;
+    tab.`date` IS NULL;
 
 DROP DATABASE IF EXISTS `test-empty-date-is-null`;
 

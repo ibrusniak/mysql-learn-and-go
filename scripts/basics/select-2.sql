@@ -7,18 +7,18 @@ DESCRIBE `classicmodels`.`employees`;
 # SHOW CREATE TABLE `classicmodels`.`employees`;
 
 SELECT
-	`employeeNumber`,
+    `employeeNumber`,
     `reportsTo`,
     `lastName`,
     `firstName`
 FROM
-	`classicmodels`.`employees`;
+    `classicmodels`.`employees`;
     
 SELECT
-	concat_ws(', ', 'Dog', 'Frog', 'Cat');
+    concat_ws(', ', 'Dog', 'Frog', 'Cat');
     
 SELECT
-	concat('Cat', 'Dog', 'Frog');
+    concat('Cat', 'Dog', 'Frog');
 
 SELECT NOW();
 

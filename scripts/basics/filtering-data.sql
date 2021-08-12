@@ -7,42 +7,42 @@
 
 SELECT `field`
 FROM
-	(SELECT NULL AS `field` UNION ALL
-	SELECT 1 UNION
-	SELECT 2) AS `someTable`
+    (SELECT NULL AS `field` UNION ALL
+    SELECT 1 UNION
+    SELECT 2) AS `someTable`
 WHERE `field` IS NOT NULL
 ORDER BY `field` DESC
 LIMIT 2;
 
 
 SELECT
-	orderNumber,
-	orderDate
-FROM
-	`classicmodels`.`orders`
-ORDER BY
-	orderDate DESC;
-
-SELECT
-	orderNumber,
+    orderNumber,
     orderDate
 FROM
-	`classicmodels`.`orders`
+    `classicmodels`.`orders`
 ORDER BY
-	orderDate DESC
+    orderDate DESC;
+
+SELECT
+    orderNumber,
+    orderDate
+FROM
+    `classicmodels`.`orders`
+ORDER BY
+    orderDate DESC
 LIMIT 5;
 
 SELECT
-	lastName,
+    lastName,
     firstName,
     jobTitle,
     officeCode
 FROM
-	`classicmodels`.`employees`
+    `classicmodels`.`employees`
 WHERE
-	jobTitle = 'Sales Rep'
+    jobTitle = 'Sales Rep'
 ORDER BY FIELD(jobTitle,
-	'President',
+    'President',
     'Sales Rep',
     'Sales Manager (NA)',
     'Sale Manager (EMEA)',
@@ -50,12 +50,12 @@ ORDER BY FIELD(jobTitle,
     'VP Sales', 'VP Marketing');
 
 SELECT
-	officeCode,
+    officeCode,
     city
 FROM
-	`classicmodels`.`offices`
+    `classicmodels`.`offices`
 WHERE
-	TRUE OR NULL;
+    TRUE OR NULL;
     
 SELECT 1 AS `number` WHERE TRUE;
 SELECT 1 AS `number` WHERE NULL;
@@ -64,45 +64,45 @@ SELECT 1 AS `number` WHERE TRUE AND NULL;
 
 SELECT word
 FROM
-	(SELECT "case" AS `word` UNION
-	SELECT "exemplar" UNION
-	SELECT "exemplification" UNION
-	SELECT "illustration" UNION
-	SELECT "instance" UNION
-	SELECT "prototype" UNION
-	SELECT "representative" UNION
-	SELECT "sample") AS `words`
+    (SELECT "case" AS `word` UNION
+    SELECT "exemplar" UNION
+    SELECT "exemplification" UNION
+    SELECT "illustration" UNION
+    SELECT "instance" UNION
+    SELECT "prototype" UNION
+    SELECT "representative" UNION
+    SELECT "sample") AS `words`
 
 WHERE
-	word LIKE '%ion' OR word LIKE '_a%';
+    word LIKE '%ion' OR word LIKE '_a%';
     
 SELECT word
 FROM
-	(SELECT 'Why' AS `word` UNION
-	SELECT 'do' UNION
-	SELECT 'we' UNION
-	SELECT 'use' UNION
-	SELECT 'it?' UNION
-	SELECT 'It' UNION
-	SELECT 'is' UNION
-	SELECT 'long' UNION
-	SELECT 'established' UNION
-	SELECT 'fact' UNION
-	SELECT 'that' UNION
-	SELECT 'reader' UNION
-	SELECT 'will' UNION
-	SELECT 'be' UNION
-	SELECT 'distracted' UNION
-	SELECT 'by' UNION
-	SELECT 'the' UNION
-	SELECT 'readable' UNION
-	SELECT 'content' UNION
-	SELECT 'of' UNION
-	SELECT 'page' UNION
-	SELECT 'when') AS `words`
+    (SELECT 'Why' AS `word` UNION
+    SELECT 'do' UNION
+    SELECT 'we' UNION
+    SELECT 'use' UNION
+    SELECT 'it?' UNION
+    SELECT 'It' UNION
+    SELECT 'is' UNION
+    SELECT 'long' UNION
+    SELECT 'established' UNION
+    SELECT 'fact' UNION
+    SELECT 'that' UNION
+    SELECT 'reader' UNION
+    SELECT 'will' UNION
+    SELECT 'be' UNION
+    SELECT 'distracted' UNION
+    SELECT 'by' UNION
+    SELECT 'the' UNION
+    SELECT 'readable' UNION
+    SELECT 'content' UNION
+    SELECT 'of' UNION
+    SELECT 'page' UNION
+    SELECT 'when') AS `words`
 WHERE
-	word REGEXP 'b(e|y)' or
-	word REGEXP '^.{3}t$';
+    word REGEXP 'b(e|y)' or
+    word REGEXP '^.{3}t$';
 
 SELECT
     f_char,

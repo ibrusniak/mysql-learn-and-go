@@ -9,13 +9,13 @@ SELECT * FROM `employees` ORDER BY `employeeNumber` DESC;
 SELECT * FROM `employees` ORDER BY `employeeNumber` DESC LIMIT 3 OFFSET 2;
 
 SELECT
-	orderNumber,
+    orderNumber,
     status
 FROM
-	orders
+    orders
 # ORDER BY FIELD(status, (SELECT DISTINCT status FROM orders) AS statusesList); # does not work. FIELD() is native function
 ORDER BY FIELD(status,
-	'In Process',
+    'In Process',
     'On Hold',
     'Cancelled',
     'Resolved',
@@ -37,14 +37,14 @@ ORDER BY someValue;
 
 SELECT `date`
 FROM
-	(SELECT CAST('2021-08-09 23:59:59' AS DATETIME) AS `date` UNION ALL
+    (SELECT CAST('2021-08-09 23:59:59' AS DATETIME) AS `date` UNION ALL
     SELECT CAST('2021-09-09 00:00:00' AS DATETIME) UNION ALL
     SELECT CAST('2021-09-09' AS DATETIME) UNION ALL
     SELECT CAST('2021-09-09 00:00:01' AS DATETIME) UNION ALL
     SELECT DATE('2021-09-09 00:00:01') UNION ALL
     SELECT TIME('2021-09-09 00:00:01')) AS T
 ORDER BY
-	`date`;
+    `date`;
 
 
 

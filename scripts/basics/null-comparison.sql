@@ -1,11 +1,11 @@
 
 SELECT
-	TRUE,
+    TRUE,
     NULL,
     FALSE;
 
 SELECT
-	NULL = NULL,
+    NULL = NULL,
     NULL <> NULL,
     NULL > NULL,
     NULL < NULL,
