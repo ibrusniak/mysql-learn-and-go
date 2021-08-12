@@ -10,6 +10,7 @@
 
 # to play with joins i create "library" database
 CREATE DATABASE IF NOT EXISTS `library` DEFAULT CHARSET = utf8mb4;
+
 USE `library`;
 
 SET @@foreign_key_checks = 0;
@@ -27,7 +28,6 @@ CREATE TABLE `book` (
     PRIMARY KEY (`id`),
     FOREIGN KEY (`author_id`) REFERENCES `author` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
-
 
 CREATE TABLE IF NOT EXISTS `author`(
     `id` INT NOT NULL AUTO_INCREMENT,

@@ -41,4 +41,3 @@ FROM
   SELECT 4 UNION ALL
   SELECT NULL) AS `numbers`
 ORDER BY `number`;
-

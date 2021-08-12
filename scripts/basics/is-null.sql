@@ -8,8 +8,6 @@ SELECT
     
 SELECT
     CAST('0000-00-00' AS DATE);
-
-
 #### test ####
 
 DROP DATABASE IF EXISTS `test-empty-date-is-null`;

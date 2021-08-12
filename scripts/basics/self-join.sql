@@ -1,5 +1,4 @@
 
-
 CREATE DATABASE IF NOT EXISTS `dbtest0`;
 
 USE `dbtest0`;
@@ -37,8 +36,10 @@ VALUES
     ("Samira", "Gilmour" , 1),
     ("Lana", "Mcfadden" , 1),
     ("Kris", "Lang" , 1);
+    
 UPDATE `employees` SET `reportsTo` = 2 WHERE `id` IN (3, 4, 5);
 UPDATE `employees` SET `reportsTo` = 6 WHERE `id` IN (7, 8, 9);
+
 # self join
 SELECT
     `emp1`.`id` AS `Employee Id`,

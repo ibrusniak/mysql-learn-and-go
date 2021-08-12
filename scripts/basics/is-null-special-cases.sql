@@ -1,5 +1,4 @@
 
-
 CREATE DATABASE IF NOT EXISTS `dbtest0`;
 
 USE `dbtest0`;
@@ -59,6 +58,3 @@ WHERE
     id IS NULL;
 
 SET @@sql_auto_is_null = 0;
-
-
-

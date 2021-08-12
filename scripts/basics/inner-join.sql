@@ -1,5 +1,4 @@
 
-
 CREATE DATABASE IF NOT EXISTS `dbtest0`;
 
 USE dbtest0;
@@ -49,4 +48,3 @@ SELECT * FROM T1 INNER JOIN T2 ON NULL;                                 # empty 
 
 SELECT * FROM t1 INNER JOIN t2 USING(color, id); # ONLTY 3 ROWS. Because null can not be compare with true
 SELECT * FROM t1 INNER JOIN t2 on (t1.id = t2.id) or (t2.id = 2);
-

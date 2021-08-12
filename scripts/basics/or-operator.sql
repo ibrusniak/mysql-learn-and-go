@@ -20,5 +20,3 @@ SELECT 1 / 0 OR 1 = 1; # NULL OR 1 = 1
 
 SELECT
   1 OR 0 AND 0 OR 1 # (1 OR (1 AND 0)) OR 1 - how it really works
-
-

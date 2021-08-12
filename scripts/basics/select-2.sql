@@ -1,7 +1,4 @@
 
-# SELECT select_list
-# FROM table_name;
-
 DESCRIBE `classicmodels`.`employees`;
 
 # SHOW CREATE TABLE `classicmodels`.`employees`;
@@ -23,4 +20,3 @@ SELECT
 SELECT NOW();
 
 SELECT NOW() - 60;
-
