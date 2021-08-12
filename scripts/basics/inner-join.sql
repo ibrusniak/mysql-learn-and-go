@@ -48,3 +48,22 @@ SELECT * FROM T1 INNER JOIN T2 ON NULL;                                 # empty 
 
 SELECT * FROM t1 INNER JOIN t2 USING(color, id); # ONLTY 3 ROWS. Because null can not be compare with true
 SELECT * FROM t1 INNER JOIN t2 on (t1.id = t2.id) or (t2.id = 2);
+
+CREATE TABLE IF NOT EXISTS f1 (
+    id INT NOT NULL AUTO_INCREMENT,
+    color VARCHAR(15),
+    PRIMARY KEY (id)
+);
+    
+CREATE TABLE IF NOT EXISTS f2 (
+    id INT NOT NULL AUTO_INCREMENT,
+    color VARCHAR(15),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO f1 (color) VALUES ('red'), ('green'), ('blue'), ('green');
+INSERT INTO f2 (color) VALUES ('red'), ('red'), ('green'), ('blue');
+
+SELECT f1.color FROM f1 INNER JOIN f2 USING (color);
+
+SELECT f1.color f2color, f2.color f2color FROM f1 INNER JOIN f2 ON true;
