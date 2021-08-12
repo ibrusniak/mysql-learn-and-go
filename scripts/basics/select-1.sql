@@ -38,3 +38,4 @@ SELECT
 
 SELECT
     @@SQL_MODE AS '@@SQL_MODE';
+    

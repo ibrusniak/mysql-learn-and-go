@@ -40,5 +40,3 @@ WHERE
     tab.`date` IS NULL;
 
 DROP DATABASE IF EXISTS `test-empty-date-is-null`;
-
-#### test ####

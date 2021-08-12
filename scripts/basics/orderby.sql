@@ -44,3 +44,4 @@ FROM
     SELECT TIME('2021-09-09 00:00:01')) AS T
 ORDER BY
     `date`;
+    

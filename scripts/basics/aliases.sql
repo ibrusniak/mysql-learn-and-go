@@ -45,3 +45,4 @@ FROM
 (SELECT
   10 AS `number`,
   'str2' AS `string2`) AS tab2 ON tab1.`string1` = tab2.`string2`;
+  

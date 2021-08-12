@@ -124,4 +124,3 @@ CREATE TABLE `products` (
 
 # Set initial value back to environment variable
 SET @@foreign_key_checks=@original_foreign_key_checks;
-

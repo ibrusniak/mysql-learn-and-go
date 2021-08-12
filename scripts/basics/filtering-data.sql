@@ -118,3 +118,4 @@ FROM
     ) AS `combination`
 WHERE
     (f_char, s_char) IN (('B', 'A'), ('B', 'Z'));
+    
