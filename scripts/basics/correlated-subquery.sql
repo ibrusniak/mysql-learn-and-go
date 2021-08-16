@@ -1,4 +1,7 @@
 
+# A correlated subquery is evaluated
+# once for each row in the outer query.
+
 use classicmodels;
 
 select
@@ -16,3 +19,4 @@ where buyPrice >
     products.productLine = p1.productLine)
 order by
   buyPrice;
+
