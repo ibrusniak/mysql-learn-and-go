@@ -43,4 +43,23 @@ with cte5 (a) as (select a from cte6),
 cte6 (a) as (select 2)
 select * from cte5; */
 
+create database if not exists dbtest0;
 
+use dbtest0;
+
+drop table if exists ctevariants;
+
+create table ctevariants (a int, b varchar(50));
+
+insert into ctevariants (a, b) values
+    (2, 'sf'),
+    (1, 'sd'),
+    (7, 'i');
+    
+select * from ctevariants;
+
+with cte1 (p, q) as (select a, b from ctevariants)
+select * from cte1;
+
+insert into ctevariants (a, b)
+with cte1 (g, h) as (select a, b from ctevariants) select * from cte1;
