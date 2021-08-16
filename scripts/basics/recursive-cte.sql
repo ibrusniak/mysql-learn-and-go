@@ -19,10 +19,9 @@ with recursive cte (accum) as (
 )
 select accum from cte;
 
+-- factorial
 with recursive f (fact, num) as (
     select 1, 5 union all
     select fact * num, num - 1 from f where num > 1
 )
 select fact, num from f order by fact desc limit 1;
-
-
