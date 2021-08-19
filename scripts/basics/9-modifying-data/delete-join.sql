@@ -41,7 +41,7 @@ with recursive data_generator (num, counter) as (
 )
 select distinct num from data_generator;
 
--- genereting distinct data (c1) for 2
+-- genereting distinct data (c1) for t2
 insert into t2 (c1)
 with recursive data_generator (num, counter) as (
     select
@@ -58,14 +58,14 @@ with recursive data_generator (num, counter) as (
 )
 select distinct num from data_generator;
 
--- backup of t1 for more second experiment
+-- backup of t1 for second experiment
 insert into t1_backup select * from t1;
 
 -- initial stat
 select
     (select count(*) from t1) `t1 count`,
     (select count(*) from t2) `t2 count`,
-    (select distinct count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
+    (select count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
 
 
 -- experiment 1. will delete only from t1
@@ -79,7 +79,7 @@ from
 select
     (select count(*) from t1) `t1 count`,
     (select count(*) from t2) `t2 count`,
-    (select distinct count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
+    (select count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
 
 -- restore t1 from backup
 truncate t1;
@@ -96,5 +96,6 @@ from
 select
     (select count(*) from t1) `t1 count`,
     (select count(*) from t2) `t2 count`,
-    (select distinct count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
+    (select count(*) from t1 inner join t2 on t1.c1 = t2.c1) `rows from t1 and t2 with matching c1 value`;
+
 
