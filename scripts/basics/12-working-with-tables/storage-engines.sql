@@ -3,6 +3,7 @@ create database if not exists sten;
 use sten;
 
 drop table if exists
+    table_source,
     t_innodb,
     t_myisam,
     t_merge,
@@ -21,6 +22,11 @@ drop table if exists
 -- archive
 -- csv
 -- federated
+
+create table table_source (
+    pk int not null auto_increment primary key,
+    c1 int
+) engine = innodb;
 
 create table t_innodb (
     pk int not null auto_increment primary key,
@@ -52,8 +58,25 @@ create table t_csv (
     c1 int not null
 ) engine = csv;
 
-create table t_federated (
-    pk int not null auto_increment primary key,
-    c1 int
-) engine = federated;
+-- generating data
+
+set @@cte_max_recursion_depth = 100000;
+
+insert into table_source (c1)
+with recursive g (a, counter) as (
+    select
+        round(rand() * 100000),
+        1
+    union all
+    select
+        round(rand() * 100000),
+        counter + 1
+    from
+        g
+    where
+        counter < 100000
+)
+select a from g;
+
+insert into t_csv (pk, c1) select c1, c1 from table_source;
 
