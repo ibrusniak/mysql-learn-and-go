@@ -60,7 +60,8 @@ create table t_csv (
 
 -- generating data
 
-set @@cte_max_recursion_depth = 100000;
+set @row_count = 5000000;
+set @@cte_max_recursion_depth = @row_count;
 
 insert into table_source (c1)
 with recursive g (a, counter) as (
@@ -74,9 +75,16 @@ with recursive g (a, counter) as (
     from
         g
     where
-        counter < 100000
+        counter < @row_count
 )
 select a from g;
 
 insert into t_csv (pk, c1) select c1, c1 from table_source;
+
+set @@max_heap_table_size = 1024 * 1024 * 1024 * 1024 * 10;
+
+insert into t_memory (c1) select c1 from table_source;
+truncate t_memory;
+
+select count(*) from t_memory;
 
