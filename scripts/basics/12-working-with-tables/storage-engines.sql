@@ -38,11 +38,6 @@ create table t_myisam (
     c1 int
 ) engine = myisam;
 
-create table t_merge (
-    pk int not null auto_increment primary key,
-    c1 int
-) engine = merge;
-
 create table t_memory (
     pk int not null auto_increment primary key,
     c1 int
@@ -60,7 +55,7 @@ create table t_csv (
 
 -- generating data
 
-set @row_count = 5000000;
+set @row_count = 10000000;
 set @@cte_max_recursion_depth = @row_count;
 
 insert into table_source (c1)
@@ -79,12 +74,24 @@ with recursive g (a, counter) as (
 )
 select a from g;
 
-insert into t_csv (pk, c1) select c1, c1 from table_source;
+truncate table_source;
 
+-- CSV
+insert into t_csv (pk, c1) select c1, c1 from table_source;
+select count(*) from t_csv;
+truncate t_csv;
+
+-- MEMORY
 set @@max_heap_table_size = 1024 * 1024 * 1024 * 1024 * 10;
 
 insert into t_memory (c1) select c1 from table_source;
 truncate t_memory;
 
 select count(*) from t_memory;
+
+-- ARCHIVE engine
+insert into t_archive (c1) select c1 from table_source;
+select count(*) from t_archive;
+
+
 
