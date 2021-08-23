@@ -30,5 +30,22 @@ begin work;
 delete from t1;
 rollback;
 
+execute `count`; # 2
+
+-- select @@autocommit;
+
+set @@autocommit = 0;
+
+execute `insert`;
+
+start transaction;
+delete from t1;
+
+select * from t1;
+
 execute `count`;
+
+-- deallocate prepare `insert`;
+-- deallocate prepare `select`;
+-- deallocate prepare `count`;
 
