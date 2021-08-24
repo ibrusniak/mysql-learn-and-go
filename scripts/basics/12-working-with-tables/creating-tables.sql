@@ -6,7 +6,8 @@ drop table if exists
   tempt,
   t1,
   table_without_indexes,
-  table_with_indexes;
+  table_with_indexes,
+  with_timestamp;
 
 create temporary table tempt (
   pk int not null auto_increment primary key,
@@ -80,3 +81,16 @@ from generator;
 -- table with indexex is very slow in delete operation
 delete from table_without_indexes limit 100000;
 delete from table_with_indexes limit 100000;
+
+
+create table with_timestamp (
+  pk int not null primary key auto_increment,
+  c1 int not null default 0,
+  tstamp timestamp default current_timestamp
+);
+
+insert into with_timestamp (c1) values (1), (3), (3), (4);
+
+select * from with_timestamp;
+
+
