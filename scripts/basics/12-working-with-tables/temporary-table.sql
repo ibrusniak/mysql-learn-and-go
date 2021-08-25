@@ -15,3 +15,5 @@ create temporary table test (
 );
 
 describe test; # temporary
+
+drop temporary table test;
