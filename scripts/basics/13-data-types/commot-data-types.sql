@@ -78,3 +78,53 @@ insert into chars0 values
 insert into chars0 values
   ('loren');
 
+-- varchar
+create table varchar_length_test_1 (
+  c1 varchar(32765) not null,
+  c2 varchar(32765) not null
+) character set 'latin1' collate latin1_danish_ci;
+
+drop table if exists varchar_length_test_2;
+-- Error Code: 1118. Row size too large.
+-- The maximum row size for the used table type, not counting BLOBs, is 65535.
+-- This includes storage overhead, check the manual. You have to change some columns to TEXT or BLOBs
+create table varchar_length_test_2 (
+  c1 varchar(32766) not null, -- error
+  c2 varchar(32766) not null
+) character set 'latin1' collate latin1_danish_ci;
+
+create table varchar_length_test_3 (
+  c1 varchar(3) not null,
+  c2 varchar(10) not null
+);
+
+-- 2 row(s) affected, 2 warning(s):
+-- 1265 Data truncated for column 'c1' at row 2 1265 Data truncated for column 'c2'
+-- at row 2 Records: 2  Duplicates: 0  Warnings: 2
+insert ignore into varchar_length_test_3 values
+  ('abc', 'abc'),
+  ('abcd', '1234567890A')
+;
+select * from varchar_length_test_3; -- loose some data
+
+create table t2 (
+  c1 varchar(10) not null
+);
+
+insert into t2 values
+  ('a'), ('b'), ('c')
+;
+
+select
+  c1,
+  length(c1)
+from
+  t2;
+
+insert into t2 values
+  ('d  '), ('  e')
+;
+
+select c1, length(c1) from t2;
+
+
