@@ -48,4 +48,20 @@ change column
 
 show create table t2;
 
+-- PRIMARY KEY
+
+create table orders (
+  created datetime not null,
+  customer int unsigned not null,
+  primary key (created, customer)
+);
+
+create table orderitems (
+  created datetime not null,
+  customer int unsigned not null,
+  line_number smallint unsigned,
+  product int unsigned,
+  foreign key (created, customer) references orders (created, customer)
+);
+
 
