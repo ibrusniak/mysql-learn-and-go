@@ -40,9 +40,9 @@ from
     inner join b_tasks_elapsed_time el on tasks.id = el.task_id
     inner join b_user users_3 on el.user_id = users_3.id
 where
-    tasks.created_date between @date_start and @date_end
+    el.created_date between @date_start and @date_end
     and
-    tasks.group_id = @group_id
+    el.user_id in (789, 1657, 1658, 1672, 1748, 1754)
 order by
     tasks.id,
     el.created_date;
