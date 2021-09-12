@@ -3,7 +3,9 @@ drop database if exists testdb;
 create database testdb;
 use testdb;
 
-create temporary table if not exists  debug_log (
+drop temporary table if exists debug_log;
+
+create temporary table debug_log (
   _message_num int unsigned auto_increment primary key,
   _timestamp timestamp default current_timestamp(),
   _val int,
@@ -20,6 +22,7 @@ begin
   values (val, message);
 end$$
 
+/*
 create procedure p1(in a int)
 begin
   call debug_writer(a, 'p1. in 1');
@@ -41,9 +44,9 @@ begin
   set c = c + 1000;
   call debug_writer(c, 'p3. inout. \'c\' after increment');
 end$$
-
+*/
 delimiter ;
-
+/*
 set @va = 100;
 call debug_writer(@va, '@va initial');
 call p1(@va);
@@ -59,7 +62,30 @@ set @vc = 50;
 call debug_writer(@vc, '@vc initial');
 call p3(@vc);
 call debug_writer(@vc, '@vc after call pc (inout c)');
+*/
 
+delimiter $$
+
+create procedure case_stmt(in a int unsigned)
+begin
+  call debug_writer(a, 'case_stmt called with \'a\' value');
+  case
+    when a = 0 then call debug_writer(a, 'zero');
+    when a = 1 then call debug_writer(a, 'one');
+    else call debug_writer (a, 'else');
+  end case;
+end$$
+
+delimiter ;
+
+set @a = 200;
+call case_stmt(@a);
+
+set @a = 0;
+call case_stmt(@a);
+
+set @a = 1;
+call case_stmt(@a);
 
 select * from debug_log;
 
