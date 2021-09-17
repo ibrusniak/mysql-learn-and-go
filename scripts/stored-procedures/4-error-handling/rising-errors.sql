@@ -32,5 +32,52 @@ delimiter ;
 -- 0 row(s) affected, 1 warning(s): 1642 Unhandled user-defined warning condition
 -- call signal_demo_1();
 
-call signal_handler();
+-- call signal_handler();
+
+delimiter $$
+
+create procedure signal_emiter_2(in val tinyint)
+begin
+    if val = 1 then
+        signal sqlstate '22222'
+            set message_text = 'state 22222';
+    elseif val = 2 then
+        signal sqlstate '33333'
+            set message_text = 'state 33333';
+    else
+        signal sqlstate '99999'
+            set message_text = 'state 99999';
+    end if;
+end$$
+
+create procedure signal_handler_2()
+begin
+    call signal_emiter_2(2);
+end$$
+
+create procedure signal_handler_3()
+begin
+    
+    declare MY_OWN_SQL_STATE condition for sqlstate '99999';
+    
+    declare continue handler for MY_OWN_SQL_STATE
+        resignal set message_text = 'resignal state 99999';
+        
+    call signal_emiter_2(3);
+    
+    select 'debug point 1' debug;
+    
+end$$
+
+-- call signal_handler_2()$$
+call signal_handler_3()$$
+
+delimiter ;
+
+
+
+
+
+
+
 
