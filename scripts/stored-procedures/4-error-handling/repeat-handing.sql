@@ -51,6 +51,20 @@ begin
   
 end $$
 
-call dh2() $$
+-- call dh2() $$
+
+create procedure dh3()
+begin
+
+  declare continue handler for sqlexception
+  select 'sqlexception occurs' debug;
+  
+  select N into @no_such_var from (select null) d;
+
+  select 'end of procedure' debug;
+  
+end $$
+
+call dh3() $$
 
 delimiter ;
