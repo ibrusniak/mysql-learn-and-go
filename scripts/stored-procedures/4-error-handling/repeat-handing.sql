@@ -3,7 +3,7 @@ drop database if exists repeat_handing;
 create database repeat_handing;
 use repeat_handing;
 
-delimiter $
+delimiter $$
 
 create procedure dh1()
 begin
@@ -28,8 +28,29 @@ begin
   
   select 'point 1' debug;
   
-end$
+end $$
 
-call dh1()$
+-- call dh1()$
+
+-- Error number: 1146; Symbol: ER_NO_SUCH_TABLE; SQLSTATE: 42S02
+create procedure dh2()
+begin
+  declare OCCURS_1146, OCCURS_42S02 int default 0;
+  declare continue handler for 1146 set OCCURS_1146 = 1;
+  declare continue handler for sqlstate '42S02' set OCCURS_42S02 = 1;
+  
+  select * from no_such_table;
+  
+  if OCCURS_1146 = 1 then
+    select 'OCCURS_1146 = 1' debug;
+  end if;
+  
+  if OCCURS_42S02 = 1 then
+    select 'OCCURS_42S02 = 1' debug;
+  end if;
+  
+end $$
+
+call dh2() $$
 
 delimiter ;
