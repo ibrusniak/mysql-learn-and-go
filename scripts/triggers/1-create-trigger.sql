@@ -38,6 +38,15 @@ begin
     set @_count = @_count + 1;
 end $$
 
+create trigger my_second_trigger
+before insert
+on t2 for each row
+begin
+    if new.col1 < 100 then
+        signal sqlstate '99999' set message_text = 'too small value for col1!';
+    end if;
+end $$
+
 delimiter ;
 
 insert into t2 (col1, col2)
@@ -49,3 +58,4 @@ values
 select * from t2;
 
 select @_count;  -- 3 for each inserted row
+
