@@ -73,7 +73,7 @@ begin
         ('column_1', 'update', 'after', old.column_2, new.column_2);
 end $$
 
-create trigger table_for_tests_before_update_1
+create trigger table_for_tests_after_delete_1
 after delete on table_for_tests for each row
 begin
     insert into table_for_audit(
@@ -110,4 +110,11 @@ delete from table_for_tests
 where
     column_1 = 500;
 
+show triggers;
+
+drop trigger table_for_tests_after_insert_1;
+drop trigger table_for_tests_after_update_1;
+drop trigger table_for_tests_after_delete_1;
+
+show triggers;
 
