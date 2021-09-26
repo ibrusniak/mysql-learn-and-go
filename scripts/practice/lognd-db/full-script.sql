@@ -112,6 +112,18 @@ INSERT INTO `users` (`name`, `email`, `age`) VALUES
   ('Александр', 'alex2@gmail.com', 27)
 ;
 
+INSERT INTO `orders` (`user_id`, `product_id`) VALUES
+  (1, 2),
+  (1, 3),
+  (3, 4),
+  (5, 1),
+  (4, 1),
+  (2, 6),
+  (5, 4),
+  (3, 6),
+  (4, 3)
+;
+
 SET @@foreign_key_checks = 1;
 
 
