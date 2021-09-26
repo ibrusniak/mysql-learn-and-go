@@ -64,8 +64,6 @@ CREATE TABLE `orders` (
 
 -- DATA
 
-USE long_db;
-
 SET @@foreign_key_checks = 0;
 
 INSERT INTO `countries` (`country`) VALUES
