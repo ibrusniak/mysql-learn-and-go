@@ -49,5 +49,51 @@ alter table t1 drop column fk1;
 
 describe t1;
 
+-- testing select with index and without it
+
+create table table_without_indexed_column (
+  column_1 int unsigned not null
+);
+
+create table table_with_indexed_column (
+  column_1 int unsigned not null,
+  index (column_1)
+);
+
+set @@cte_max_recursion_depth = 1000001;
+
+insert ignore into
+table_with_indexed_column (column_1)
+with recursive cte (_counter) as (
+  select 1 union all
+  select _counter + 1
+  from cte where _counter < 1000000)
+select
+  round(rand() * 1000000) as column_1
+from
+  cte;
+
+insert into table_without_indexed_column
+select column_1 from table_with_indexed_column;
+
+select 'table_with_indexed_column' as _table_name, count(*) as rows_count
+from table_with_indexed_column
+union all
+select 'table_without_indexed_column' as _table_name, count(*) as rows_count
+from table_without_indexed_column;
+
+insert into table_without_indexed_column values
+  (round(rand() * 1000000));
+
+insert into table_with_indexed_column values
+  (round(rand() * 1000000));
+
+select *
+from table_with_indexed_column
+limit 50000, 10;
+
+delete from table_without_indexed_column; -- faster
+
+delete from table_with_indexed_column; -- slower
 
 
