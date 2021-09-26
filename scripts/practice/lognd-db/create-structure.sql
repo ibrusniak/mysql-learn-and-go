@@ -6,7 +6,7 @@
 
 DROP DATABASE IF EXISTS long_db;
 
-CREATE DATABASE long_db;
+CREATE DATABASE long_db DEFAULT CHARACTER SET = utf8mb4;
 
 USE long_db;
 
