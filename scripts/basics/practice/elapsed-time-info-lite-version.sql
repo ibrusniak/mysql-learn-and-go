@@ -13,6 +13,7 @@ select
     el.created_date `Elapsed created date`,
     el.seconds `Elapsed seconds`,
     el.minutes `Elapsed minutes`,
+    round(el.minutes / 60, 2) `Elapsed hours (decimal)`,
     concat(users_3.`name`, ' ', users_3.last_name) `Elapsed user full name`
 from
     b_tasks tasks
@@ -24,7 +25,7 @@ from
 where
     el.created_date between @date_start and @date_end
     and
-    el.user_id in (789, 1657, 1658, 1672, 1748, 1754)
+    el.user_id in (789, 1657, 1658, 1672, 1748, 1754, 1509)
 order by
     tasks.id,
     el.created_date;
