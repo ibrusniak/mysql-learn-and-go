@@ -4,7 +4,6 @@ use bitrix_79;
 set @date_start = '2021-08-01 00:00:00';
 set @date_end = '2021-08-31 23:59:59';
 
-
 select
     tasks.id `ID`,
     tasks.title `Title`,
